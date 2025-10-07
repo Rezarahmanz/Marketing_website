@@ -1,0 +1,79 @@
+"use client";
+
+import React, { useState } from "react";
+import VantaCells from "./visuals/VantaCells";
+import VantaTrunk from "./visuals/VantaTrunk";
+import VantaFog from "./visuals/VantaFog";
+import VantaClouds from "./visuals/VantaClouds";
+import SplineViewer from "./visuals/SplineViewer";
+
+type VisualMode = {
+  key: "cells" | "trunk" | "fog" | "clouds" | "spline" | "spline2" | "spline3";
+  // | "spline4";
+  render: () => React.JSX.Element;
+};
+
+const visualModes: readonly VisualMode[] = [
+  {
+    key: "spline",
+    render: () => (
+      <SplineViewer url="https://prod.spline.design/hBACOet4chGONve2/scene.splinecode" />
+    ),
+  },
+  {
+    key: "spline2",
+    render: () => (
+      <SplineViewer url="https://prod.spline.design/r3liXaN23OlK9eA1/scene.splinecode" />
+    ),
+  },
+  {
+    key: "spline3",
+    render: () => (
+      <SplineViewer url="https://prod.spline.design/e7Tkrslc-V66sEf4/scene.splinecode" />
+    ),
+  },
+  // {
+  //   key: "spline4",
+  //   render: () => (
+  //     <SplineViewer url="https://prod.spline.design/r3liXaN23OlK9eA1/scene.splinecode" />
+  //   ),
+  // },
+  { key: "fog", render: () => <VantaFog /> },
+  { key: "cells", render: () => <VantaCells /> },
+  { key: "trunk", render: () => <VantaTrunk /> },
+  { key: "clouds", render: () => <VantaClouds /> },
+] as const;
+
+export default function HeroVisualization(): React.JSX.Element {
+  const [modeIndex, setModeIndex] = useState(0);
+  const { render } = visualModes[modeIndex];
+
+  const goPrev = () =>
+    setModeIndex((i) => (i - 1 + visualModes.length) % visualModes.length);
+  const goNext = () => setModeIndex((i) => (i + 1) % visualModes.length);
+
+  return (
+    <div className="h-full w-full relative">
+      {render()}
+
+      {/* <div className="pointer-events-none absolute inset-0 flex items-center justify-between px-2 md:px-3">
+        <button
+          type="button"
+          aria-label="Previous visualization"
+          onClick={goPrev}
+          className="pointer-events-auto h-8 w-8 md:h-9 md:w-9 rounded-full border border-white/20 bg-black/50 text-white flex items-center justify-center backdrop-blur-sm hover:bg-black/70"
+        >
+          ‹
+        </button>
+        <button
+          type="button"
+          aria-label="Next visualization"
+          onClick={goNext}
+          className="pointer-events-auto h-8 w-8 md:h-9 md:w-9 rounded-full border border-white/20 bg-black/50 text-white flex items-center justify-center backdrop-blur-sm hover:bg-black/70"
+        >
+          ›
+        </button>
+      </div> */}
+    </div>
+  );
+}
