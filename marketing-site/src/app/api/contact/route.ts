@@ -1,4 +1,14 @@
+import nodemailer from "nodemailer";
 import { NextRequest, NextResponse } from "next/server";
+
+function escapeHtml(unsafe: string) {
+  return unsafe
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "<")
+    .replaceAll(">", ">")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -14,10 +24,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-<<<<<<< Updated upstream
-    // TODO: Hook up email or CRM integration here.
-    console.log("Contact form submission", { name, email, message });
-=======
     // Basic email validation to reduce obvious spam
     const isLikelyEmail = /.+@.+\..+/.test(email) && email.length <= 254;
     if (!isLikelyEmail) {
@@ -39,9 +45,7 @@ export async function POST(request: NextRequest) {
       ? process.env.SMTP_SECURE === "true"
       : smtpPort === 465;
 
-    const hasSmtpConfig = Boolean(
-      smtpUrl || smtpHost || (smtpUser && smtpPass)
-    );
+    const hasSmtpConfig = Boolean(smtpUrl || smtpHost || (smtpUser && smtpPass));
     if (!hasSmtpConfig) {
       console.error(
         "SMTP not configured. Set SMTP_URL or SMTP_HOST/PORT/USER/PASS env vars."
@@ -64,21 +68,16 @@ export async function POST(request: NextRequest) {
               : undefined,
         });
 
-    const toAddress = process.env.CONTACT_TO_EMAIL || "efreethy@gmail.com";
-    const fromAddress =
-      process.env.SMTP_FROM || smtpUser || "no-reply@ultra.ai";
+    const toAddress = process.env.CONTACT_TO_EMAIL || smtpUser || "no-reply@example.com";
+    const fromAddress = process.env.SMTP_FROM || smtpUser || "no-reply@example.com";
 
-    const subject = `Ultra AI — New contact form submission from ${name}`;
+    const subject = `New contact form submission from ${name}`;
     const textBody = `New contact form submission\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
     const htmlBody = `
       <div style="font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.5;">
         <h2 style="margin: 0 0 12px;">New contact form submission</h2>
-        <p style="margin: 0 0 4px;"><strong>Name:</strong> ${escapeHtml(
-          name
-        )}</p>
-        <p style="margin: 0 0 12px;"><strong>Email:</strong> ${escapeHtml(
-          email
-        )}</p>
+        <p style="margin: 0 0 4px;"><strong>Name:</strong> ${escapeHtml(name)}</p>
+        <p style="margin: 0 0 12px;"><strong>Email:</strong> ${escapeHtml(email)}</p>
         <div style="padding: 12px; border: 1px solid #eee; border-radius: 8px; background: #fafafa;">
           <div style="white-space: pre-wrap;">${escapeHtml(message)}</div>
         </div>
@@ -95,17 +94,16 @@ export async function POST(request: NextRequest) {
         html: htmlBody,
       });
     } catch (error) {
-      // Avoid leaking sensitive details to the client
       console.error("Failed to send contact email:", error);
       return NextResponse.json(
         { ok: false, error: "Failed to send message" },
         { status: 500 }
       );
     }
->>>>>>> Stashed changes
 
     return NextResponse.redirect(new URL("/?#contact=success", request.url));
-  } catch {
+  } catch (err) {
+    console.error("Unexpected error in contact POST:", err);
     return NextResponse.json(
       { ok: false, error: "Unexpected error" },
       { status: 500 }
