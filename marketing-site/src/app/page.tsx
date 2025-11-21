@@ -380,7 +380,7 @@ export default function Home() {
               <h2 className="text-xl font-semibold mb-4">Leadership</h2>
               <p className="text-white/70">
                 Ultra AI is led by a radiologist and an AI engineer. We build an
-                AI‑native operating system for radiology with a capital‑light
+                AI‑native operating system for medicine with a capital‑light
                 model, strong ecosystem partnerships, and a design aligned with
                 regulatory pathways.
               </p>
@@ -501,10 +501,10 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-6">
             <div className="relative overflow-hidden rounded-3xl ring-1 ring-white/10 bg-[radial-gradient(140%_120%_at_50%_-20%,rgba(168,85,247,0.18),rgba(0,0,0,0)_60%)] p-10 md:p-20 text-center">
               <h2 className="text-3xl md:text-6xl leading-tight">
-                Your radiology workflow, on autopilot
+                Your medical workflow, on autopilot
               </h2>
               <p className="text-white/70 mt-6 text-base md:text-lg">
-                Free radiologists from busywork with agentic automation, end to
+                Free physicians from busywork with agentic automation, end to
                 end.
               </p>
               <div className="mt-10">
