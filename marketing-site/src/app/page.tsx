@@ -24,8 +24,8 @@ export default function Home() {
       image: "/nima.jpeg",
     },
     {
-      name: "Hedi Razavi, PhD",
-      role: "Operations Lead",
+      name: "Prof. Nassir Navab, PhD",
+      role: "Chief Scientific Officer",
       linkedin: "",
       image: "/hedi.png",
     },
@@ -139,20 +139,20 @@ export default function Home() {
               >
                 <motion.div variants={childFadeUp}>
                   <div className="inline-flex items-center rounded-full border border-purple-500/60 bg-black/60 px-3 py-1 text-xs text-white/80">
-                    <span>Radiology 2.0</span>
+                    <span>Medicine 2.0</span>
                   </div>
                 </motion.div>
                 <motion.h1
                   className="text-4xl md:text-6xl leading-tight break-words"
                   variants={childFadeUp}
                 >
-                  Agentic AI Radiology - A New Era of Optimized Workflow
+                  AI Physician - A New Era of Medicine
                 </motion.h1>
                 <motion.p
                   className="text-white/70 max-w-xl"
                   variants={childFadeUp}
                 >
-                  Everything in One End-to-End Solution, from Image Quality
+                  Everything in One End-to-End Solution, from Quality
                   Control to Diagnosis and Report Generation
                 </motion.p>
                 <motion.div className="flex min-w-0" variants={childFadeUp}>
@@ -160,7 +160,7 @@ export default function Home() {
                     href="#how"
                     className="inline-flex items-center justify-center rounded-full bg-black text-white text-sm font-medium px-5 py-3 border border-purple-500/60 shadow-[0_0_24px_rgba(168,85,247,0.35)] hover:shadow-[0_0_32px_rgba(168,85,247,0.5)] hover:border-purple-400 transition w-full sm:w-auto text-center sm:whitespace-nowrap"
                   >
-                    Why Is Radiology 2.0 The Future of Radiology?
+                    The Future of Medicine Is Here.
                   </a>
                 </motion.div>
               </motion.div>
@@ -181,7 +181,7 @@ export default function Home() {
         <section id="how" className="pt-24 border-t border-white/10">
           <div className="mx-auto max-w-7xl px-6 grid gap-10 md:grid-cols-3">
             <div className="md:col-span-1">
-              <h2 className="text-xl font-semibold mb-3">Why Radiology 2.0?</h2>
+              <h2 className="text-xl font-semibold mb-3">Why Medicine 2.0?</h2>
             </div>
             <div className="md:col-span-2">
               <ul className="grid gap-6">
@@ -192,8 +192,8 @@ export default function Home() {
                       End-to-end solution:
                     </h3>
                     <p className="text-white/80 text-sm">
-                      Maximum automation to address fragmented radiology
-                      workflows that drive radiologist burnout, prolong patient
+                      Maximum automation to address fragmented medical
+                      workflows that drive physician burnout, prolong patient
                       wait times, increase misdiagnosis rates, and limit revenue
                       potential.
                     </p>
@@ -207,7 +207,7 @@ export default function Home() {
                     </h3>
                     <p className="text-white/80 text-sm">
                       An AI solution trained on the most heterogeneous,
-                      multimodal dataset containing billions of images.
+                      multimodal dataset containing billions of data.
                     </p>
                   </div>
                 </li>
@@ -218,7 +218,7 @@ export default function Home() {
                       Explainable AI:
                     </h3>
                     <p className="text-white/80 text-sm">
-                      AI that reasons like a radiologist.
+                      AI that reasons like a Physician.
                     </p>
                   </div>
                 </li>
@@ -264,18 +264,18 @@ export default function Home() {
             <div className="grid gap-6 md:grid-cols-3">
               {[
                 {
-                  title: "UltraRad — Radiology AI Foundation Model",
-                  desc: "Assists anatomy segmentation, on‑click pathology segmentation, Image quality control, and structured report drafting. Built for explainability and modular indications.",
+                  title: "Foundation AI — Unified Clinical Intelligence",
+                  desc: "A single model that understands every step of diagnosis.",
                   Icon: Waypoints,
                 },
                 {
-                  title: "UltraViewer — Next‑gen AI Image Viewer",
-                  desc: "AR‑ready viewing with embedded AI assistance for analysis, summarization, and PACS/EHR integrity.",
+                  title: "Accuracy — Proven Physician-Level Performance",
+                  desc: "Measurably matches the diagnostic performance of board-certified clinicians.",
                   Icon: Monitor,
                 },
                 {
-                  title: "Radiology 2.0 — AI‑native OS",
-                  desc: "Combines UltraRad + UltraViewer into an agentic layer to streamline intake → reading → reporting.",
+                  title: "Explainability — Clinically Grounded Reasoning",
+                  desc: "Thinks through cases the way a physician does.",
                   Icon: AppWindowMac,
                 },
               ].map(({ title, desc, Icon }) => (
@@ -309,7 +309,7 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-6 grid gap-10 md:grid-cols-2">
             <div>
               <h2 className="text-xl font-semibold mb-3">
-                For Radiology Centers
+                For Healthcare Centers
               </h2>
               <ul className="text-white/70 text-sm space-y-2 list-disc pl-5">
                 <li>
